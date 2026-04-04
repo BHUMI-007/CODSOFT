@@ -5,11 +5,13 @@ from recommender import movies_df, hybrid_recommend
 app = Flask(__name__)
 CORS(app)
 
+
 @app.route("/movies", methods=["GET"])
 def get_movies():
     # Return top 50 popular movies for UI
     from recommender import ratings_df
-    popular = ratings_df["movieId"].value_counts().head(50).index
+    # head(50) ki jagah head(30) karo
+    popular = ratings_df["movieId"].value_counts().head(30).index
     result = movies_df[movies_df["movieId"].isin(popular)][["movieId","title","genres"]].copy()
     result["genres"] = result["genres"].str.split()
     return result.to_dict(orient="records")

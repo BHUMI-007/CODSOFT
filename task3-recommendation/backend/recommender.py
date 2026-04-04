@@ -21,6 +21,14 @@ tags_grouped = tags_df.groupby("movieId")["tag"].apply(lambda x: " ".join(x)).re
 movies_df = movies_df.merge(tags_grouped, on="movieId", how="left")
 movies_df["tag"] = movies_df["tag"].fillna("")
 
+# ratings_df load karne ke baad yeh line add karo
+# Sirf top 200 movies use karo (500 ki jagah)
+top_movies = ratings_df["movieId"].value_counts().head(200).index
+ratings_filtered = ratings_df[ratings_df["movieId"].isin(top_movies)]
+
+# Sirf 20% users use karo
+ratings_filtered = ratings_filtered[ratings_filtered["userId"] % 5 == 0]
+
 # Combine genres + tags for content analysis
 movies_df["content"] = movies_df["genres"] + " " + movies_df["tag"]
 

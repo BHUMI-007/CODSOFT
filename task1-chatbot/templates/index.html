@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RuleBot — Rule-Based Chatbot</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="chat-wrapper">
+    <div class="chat-header">
+      <div class="avatar">R</div>
+      <div>
+        <h2>RuleBot</h2>
+        <span class="status">● online — rule-based NLP</span>
+      </div>
+    </div>
+
+    <div class="chat-messages" id="messages"></div>
+
+    <div class="suggestions">
+      <button onclick="sendSuggestion('Hello')">Hello</button>
+      <button onclick="sendSuggestion('Tell me a joke')">Tell me a joke</button>
+      <button onclick="sendSuggestion('What is AI?')">What is AI?</button>
+      <button onclick="sendSuggestion('Help')">Help</button>
+      <button onclick="sendSuggestion('What time is it?')">Time</button>
+      <button onclick="sendSuggestion('Bye')">Bye</button>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off" />
+      <button id="send-btn" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

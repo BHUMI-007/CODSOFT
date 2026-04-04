@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #f093fb 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app {
+  background: white;
+  border-radius: 24px;
+  padding: 40px 48px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  max-width: 420px;
+  width: 100%;
+}
+
+.title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.title span { color: #667eea; }
+
+.subtitle {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 24px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 28px;
+  background: #f0f0ff;
+  color: #667eea;
+  border: 2px solid #667eea;
+  transition: all 0.3s;
+}
+
+.status-badge.human_wins { background: #e8fff0; color: #22c55e; border-color: #22c55e; }
+.status-badge.ai_wins    { background: #fff0f0; color: #ef4444; border-color: #ef4444; }
+.status-badge.draw       { background: #fff8e8; color: #f59e0b; border-color: #f59e0b; }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.cell {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  font-family: 'Fredoka One', cursive;
+  font-size: 52px;
+}
+
+.cell.empty {
+  background: #f3f4f6;
+  border: 3px dashed #d1d5db;
+}
+
+.cell.empty:hover {
+  background: #e8e8ff;
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+.cell.x {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  box-shadow: 0 6px 20px rgba(102,126,234,0.4);
+  cursor: default;
+  animation: pop 0.2s ease;
+}
+
+.cell.o {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: white;
+  box-shadow: 0 6px 20px rgba(240,147,251,0.4);
+  cursor: default;
+  animation: pop 0.2s ease;
+}
+
+@keyframes pop {
+  0%   { transform: scale(0.8); }
+  60%  { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, #667eea, #f093fb);
+  color: white;
+  border: none;
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+  margin-bottom: 24px;
+}
+
+.reset-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102,126,234,0.5);
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 600;
+}
+
+.x-dot {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  margin-right: 4px;
+}
+
+.o-dot {
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  margin-right: 4px;
+}
